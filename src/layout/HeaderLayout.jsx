@@ -22,11 +22,20 @@ export default function HeaderLayout() {
 
 	return (
 		<header className="w-full min-h-16 bg-zinc-800 text-white flex justify-around items-center py-2 ">
-			<h1 className="text-2xl font-bold cursor-pointer select-none "
+			<div className="flex flex-row items-center gap-2 cursor-pointer select-none"
 				onClick={() => {
 					navigator(`${PrivateRoutes.private}`, { replace: true });
-				}}
-			>notik.</h1>
+				}}>
+
+				<picture className="w-12 h-12 overflow-hidden">
+					<img src="/notik-favicon.png" alt="profile" />
+				</picture>
+
+				<h1 className="text-2xl font-bold"
+
+				>notik.</h1>
+
+			</div>
 
 			<nav className="flex justify-around items-center gap-4">
 				{

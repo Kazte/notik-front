@@ -5,10 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'auto-fit': 'repeat(auto-fit, minmax(300px, 1fr))',
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require('tailwind-scrollbar'),
   ],
 }
 

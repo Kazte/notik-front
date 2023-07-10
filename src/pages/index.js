@@ -5,5 +5,6 @@ export { default as NotesPage } from "./private/NotesPage";
 export { default as ProfilePage } from "./private/ProfilePage";
 export * from "./private";
 export { default as LoginPage } from "./public/LoginPage";
+export { default as NotFoundPage } from "./public/NotFoundPage";
 export { default as RegisterPage } from "./public/RegisterPage";
 export * from "./public";

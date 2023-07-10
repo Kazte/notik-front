@@ -5,7 +5,7 @@ export default function NotePreview({ note }) {
 
 
 	return (
-		<Link to={`${note.id}`} className="flex flex-col gap-4 w-96 overflow-hidden bg-[#1e1e1e] p-4 rounded-lg shadow-lg hover:scale-105 transform transition
+		<Link to={`${note.id}`} className="flex flex-col gap-4 min-w-[200px] max-w-[400px] bg-[#1e1e1e] p-4 rounded-lg shadow-lg hover:scale-105 transform transition
 
 		">
 			<h1 className="text-xl font-bold">{note.noteTitle}</h1>

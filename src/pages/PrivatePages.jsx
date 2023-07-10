@@ -1,10 +1,10 @@
 import { Route } from "react-router-dom";
-import NotesPage from "./private/NotesPage";
-import NotesDetailPage from "./private/NotesDetailPage";
-import ProfilePage from "./private/ProfilePage";
 import { PrivateRoutes } from "../models/routes";
 import RoutesWithNotFound from "../utils/routesWithNotFound";
 import { Navigate } from "react-router-dom";
+import NotesPage from "./private/NotesPage";
+import NotesDetailPage from "./private/NotesDetailPage";
+import ProfilePage from "./private/ProfilePage";
 
 export default function PrivatePages() {
 	return (

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { NotePreview } from "../../components";
 import AddIcon from "../../icons/AddIcon";
-import { BASE_URL_API } from "../../utils/config";
 import { useSelector } from "react-redux";
 import NotesService from "../../services/notes-service";
 
@@ -68,18 +67,33 @@ export default function NotesPage() {
 
 
 	return (
-		<>
-			<div className="fixed bottom-32 right-4 bg-[#4caf50]  p-4 rounded-full cursor-pointer transition hover:shadow-lg hover:bg-[#43a047] hover:scale-105 duration-300 ease-in-out" onClick={handleNewNote}>
-				<AddIcon />
-			</div>
-			<div className="flex flex-col flex-wrap items-center justify-center gap-4">
+		<div className="flex flex-col flex-wrap items-center justify-center gap-4">
 
-				<h1 className="text-4xl font-bold">Notes</h1>
+			<h1 className="text-4xl font-bold">Notes</h1>
 
-				<div className="flex flex-row flex-wrap items-center justify-center gap-4">
-					{notes.map(note => <NotePreview key={note.id} note={note} />)}
+			<hr className="w-full md:w-3/4 mx-auto" />
+
+			<div className="flex flex-row items-center justify-end w-full md:w-3/4 mx-auto">
+				<div className="flex flex-row gap-2">
+					<button
+						className={`px-4 py-2 bg-[#1e1e1e] border-b-2 border-transparent transition hover:border-gray-300 hover:border-gray-300`}
+						onClick={() => handleNewNote()}
+					>
+						Create New Note
+					</button>
 				</div>
 			</div>
-		</>
+
+
+
+			<div className="grid w-full md:w-3/4 mx-auto gap-4"
+				style={
+					{
+						"gridTemplateColumns": "repeat(auto-fit, minmax(300px, 1fr))",
+					}
+				}>
+				{notes.map(note => <NotePreview key={note.id} note={note} />)}
+			</div>
+		</div >
 	);
 }
