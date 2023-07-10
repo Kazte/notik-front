@@ -85,7 +85,7 @@ export default function RegisterPage() {
 
 					<button type="submit"
 						disabled={fetching}
-						className="bg-zinc-500 text-white rounded-md px-4 py-2 hover:bg-zinc-600 transition-colors">Login</button>
+						className="bg-zinc-500 text-white rounded-md px-4 py-2 hover:bg-zinc-600 transition-colors">Register</button>
 				</form>
 
 				<div className="mt-4">

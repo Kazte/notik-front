@@ -31,7 +31,7 @@ function App() {
               <Route path={PublicRoutes.register} element={<RegisterPage />} />
 
 
-              <Route element={<AuthGuard />}>
+              <Route element={<AuthGuard privateValidation={true} />}>
                 <Route path={`${PrivateRoutes.private}/*`} element={<PrivatePages />} />
               </Route>
 

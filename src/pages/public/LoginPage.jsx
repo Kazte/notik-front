@@ -91,7 +91,7 @@ export default function LoginPage() {
         </form>
 
         <div className="mt-4">
-          <p>Don&#39t have an account? <Link to="/register" className="text-zinc-500 hover:text-zinc-600">Register</Link></p>
+          <p>Don&apos;t have an account? <Link to="/register" className="text-zinc-500 hover:text-zinc-600">Register</Link></p>
         </div>
       </div>
     </div>
