@@ -33,7 +33,7 @@ export default function LoginPage() {
       }
 
     } catch (err) {
-      console.log(err)
+      console.error("Error in login: ", err)
     }
 
   }

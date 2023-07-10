@@ -45,13 +45,14 @@ const NotesService = {
 	},
 
 	deleteNote: async (token, noteId) => {
-		const response = await fetch(`${baseNotesUrl}/${noteId}`, {
+		const response = await fetch(`${baseNotesUrl}`, {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",
 				"x-api-key": import.meta.env.VITE_API_KEY,
 				"Authorization": `Bearer ${token}`
-			}
+			},
+			body: JSON.stringify({ noteId: noteId })
 		});
 		const data = await response.json();
 		return data;

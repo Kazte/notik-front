@@ -6,6 +6,10 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark as dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { useParams } from 'react-router-dom';
 import { Spinner } from '../../components';
+import NotesService from '../../services/notes-service';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { PrivateRoutes } from '../../models/routes';
 
 const previewState = {
 	MARKDOWN: "markdown",
@@ -16,28 +20,28 @@ export default function NotesDetailPage() {
 
 	const [note, setNote] = useState(null)
 	const [viewState, setViewState] = useState(previewState.MARKDOWN)
-	const params = useParams();
+	const userState = useSelector((store) => store.user)
+	const params = useParams()
+	const navigator = useNavigate()
+
 
 	useEffect(() => {
 		// Get the note from the server
 		const noteId = params.id;
 
-		setTimeout(() => {
-			fetch(`https://localhost:44390/api/Notes/${noteId}`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					"x-api-key": import.meta.env.VITE_API_KEY
-				}
-			})
-				.then(res => res.json())
-				.then(data => {
-					setNote(data);
-				})
-		}, 100);
+		getNoteFromServer(noteId);
 
+	}, [params, userState]);
 
-	}, [params]);
+	const getNoteFromServer = async (noteId) => {
+		try {
+			const data = await NotesService.getNoteById(userState.token, noteId);
+
+			setNote(data)
+		} catch (error) {
+			console.error("getNoteFromServer", error);
+		}
+	}
 
 	const handleOnClickView = (view) => {
 
@@ -47,30 +51,48 @@ export default function NotesDetailPage() {
 		setViewState(view);
 	}
 
-	const handleOnClickSave = () => {
+	const handleOnClickSave = async () => {
 
-		const json = JSON.stringify({
-			"id": note.id,
-			"noteTitle": note.noteTitle,
-			"noteBody": note.noteBody,
-			"noteCreated": note.noteCreated,
-			"noteModified": new Date().toISOString(),
-			"userId": note.userId
-		})
 
-		// Save the note to the server
-		fetch(`https://localhost:44390/api/Notes`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-				"x-api-key": import.meta.env.VITE_API_KEY
-			},
-			body: json
-		})
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-			})
+
+		try {
+			const json = {
+				"id": note.id,
+				"noteTitle": note.noteTitle,
+				"noteBody": note.noteBody,
+				"noteCreated": note.noteCreated,
+				"noteModified": new Date().toISOString(),
+				"userId": note.userId
+			}
+			const token = userState.token
+			const data = await NotesService.updateNote(token, json)
+
+			if (!data.result) {
+				throw new Error("Error updating note")
+			}
+
+		} catch (error) {
+			console.error("handleOnClickSave", error);
+		}
+
+
+	}
+
+	const handleOnNoteDelete = async () => {
+		const noteId = note.id
+		try {
+			const token = userState.token
+
+			const data = await NotesService.deleteNote(token, noteId)
+
+			if (data.result) {
+				navigator(`/${PrivateRoutes.private}`, { replace: true })
+			} else {
+				throw new Error("Error deleteing note")
+			}
+		} catch (error) {
+			console.error("handleOnNoteDelete", error);
+		}
 	}
 
 
@@ -164,12 +186,13 @@ export default function NotesDetailPage() {
 				<div className="flex flex-row gap-2">
 					<button
 						className="px-4 py-2 bg-[#1e1e1e] transition border-b-2 rounded-sm border-transparent hover:border-[#4caf50]"
-						onClick={() => handleOnClickSave()}
+						onClick={handleOnClickSave}
 					>Save
 					</button>
 
 					<button
 						className="px-4 py-2 bg-[#1e1e1e] transition border-b-2 rounded-sm border-transparent hover:border-[#d32f2f]"
+						onClick={handleOnNoteDelete}
 					>Delete
 					</button>
 				</div>

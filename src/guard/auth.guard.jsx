@@ -11,10 +11,11 @@ export function AuthGuard({ privateValidation }) {
 	const navigator = useNavigate()
 
 	const verifyToken = async () => {
+		if (!userState.token)
+			return navigator(PublicRoutes.login, { replace: true })
+
 		try {
 			const data = await AuthService.verify(userState.token)
-
-			console.log("verifyToken", data);
 
 			if (!data.response) {
 				navigator(PublicRoutes.login, { replace: true })
@@ -26,7 +27,7 @@ export function AuthGuard({ privateValidation }) {
 
 	useEffect(() => {
 		verifyToken()
-	}, [navigator])
+	}, [navigator, userState])
 
 
 	return userState.userId ?
