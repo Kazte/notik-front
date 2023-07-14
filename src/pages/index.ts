@@ -1,0 +1,7 @@
+export { default as RoutesWithNotFound } from './RoutesWithNotFound'
+export * from './private/NoteDetailPage'
+export { default as NotesPage } from './private/NotesPage'
+export { default as PrivatePage } from './private/PrivatePage'
+export { default as ProfilePage } from './private/ProfilePage'
+export { default as LoginPage } from './public/LoginPage'
+export { default as RegisterPage } from './public/RegisterPage'
