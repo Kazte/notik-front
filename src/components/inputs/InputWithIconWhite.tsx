@@ -7,7 +7,7 @@ interface Props {
 	disabled?: boolean
 	rightComponent?: React.ReactNode
 }
-export default function InputWithIcon({ id, icon, placeholder, type, label, disabled, rightComponent }: Props) {
+export default function InputWithIconWhite({ id, icon, placeholder, type, label, disabled, rightComponent }: Props) {
 	return (
 		<div className="flex flex-col gap-1 ">
 			<label htmlFor={id} className="block text-sm font-medium">{label}</label>

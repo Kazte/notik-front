@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { Button, InputWithIcon, ToggleButton } from '../../components'
+import { Button, InputWithIconWhite, ToggleButton } from '../../components'
 import { useSeo } from '../../hooks'
 import { EmailIcon, HideIcon, PasswordIcon, ShowIcon, UserIcon } from '../../icons'
 import { Link, useNavigate } from 'react-router-dom'
@@ -70,9 +70,9 @@ export default function RegisterPage() {
 			<div className="w-full max-w-md p-4 space-y-4 bg-neutral-800 rounded-sm">
 				<h1 className='text-3xl font-bold text-center'>Login</h1>
 				<form className="flex flex-col gap-4" onSubmit={onSubmitHandler} onChange={() => { setErrors([]) }}>
-					<InputWithIcon disabled={fetching} id='username' label="Username" icon={<UserIcon />} placeholder='Username' type='text' />
-					<InputWithIcon disabled={fetching} id='email' label="Email" icon={<EmailIcon />} placeholder='Email' type='email' />
-					<InputWithIcon disabled={fetching} id='password' label="Password" icon={<PasswordIcon />} placeholder='Password' type={hidePassword ? 'password' : 'text'}
+					<InputWithIconWhite disabled={fetching} id='username' label="Username" icon={<UserIcon />} placeholder='Username' type='text' />
+					<InputWithIconWhite disabled={fetching} id='email' label="Email" icon={<EmailIcon />} placeholder='Email' type='email' />
+					<InputWithIconWhite disabled={fetching} id='password' label="Password" icon={<PasswordIcon />} placeholder='Password' type={hidePassword ? 'password' : 'text'}
 						rightComponent={<ToggleButton onChanged={handleTogglePasswordOnChanged} childrenTrue={<HideIcon />} childrenFalse={<ShowIcon />} />}
 					/>
 

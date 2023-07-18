@@ -1,31 +1,47 @@
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { NotesPreview } from '../../components'
 import { useSeo } from '../../hooks'
 import { Note } from '../../models'
+import { AppStore } from '../../redux/store'
+import { note } from '../../services'
+import NotesService from '../../services/note.service'
 
 
 export default function NotesPage() {
 
 	useSeo({ title: 'Notes', desription: 'Notes page' })
 
-	const note: Note = {
-		id: 1,
-		noteTitle: 'Title',
-		noteBody: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit deleniti in maiores eos dolorem, repellendus quasi amet quae rem est. Lorem sum dolor sit amet consectetur adipisicing elit. Hic ex est quis facere necessitatibus repellat eius numquam deleniti quidem rem! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat atque quidem aliquid accusamus fugit voluptatum, in debitis laboriosam reiciendis harum?',
-		noteCreated: '2021-09-28T00:00:00.000Z',
-		noteModified: '2021-09-28T00:00:00.000Z',
-		public: false,
-		userId: 4,
+
+	const userState = useSelector((store: AppStore) => store.user)
+	const [notes, setNotes] = useState<Note[]>([])
+
+	useEffect(() => {
+		getNotes()
+	}, [])
+
+	const getNotes = async () => {
+		try {
+			const response = await NotesService.getAllFromUser(userState.token, userState.id)
+
+			setNotes(response)
+		} catch (error) {
+			console.error('getNotes error\n', error)
+		}
 	}
 
 
 	return (
-		<ul className="flex flex-wrap gap-4 justify-center items-center p-4">
-			{
-				Array(10).fill(note).map((note, index) => (
-					<NotesPreview key={index} note={note} />
-				))
-			}
+		<div className="container mx-auto px-4">
+			<h1 className="text-3xl font-bold">My Notes</h1>
+			<ul className="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] align-start justify-center gap-4 mt-4">
+				{
+					notes.map((note, index) => (
+						<NotesPreview key={index} note={note} />
+					))
+				}
 
-		</ul>
+			</ul>
+		</div>
 	)
 }

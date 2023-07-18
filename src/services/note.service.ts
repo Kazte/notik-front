@@ -1,4 +1,5 @@
-import { BASE_URL_API } from '../utils/config'
+import { BASE_URL_API } from '../utilities'
+
 
 const baseNotesUrl = `${BASE_URL_API}/Notes`
 
