@@ -24,10 +24,8 @@ export const AuthGuard = ({ privateValidation }: Props) => {
 	}, [navigate])
 
 	const verifyUser = async () => {
-
 		try {
 			const response = await AuthService.verify(userState.token)
-
 			if (!response.response) {
 				navigate(PublicRoutes.LOGIN, { replace: true })
 				clearLocalStorage(UserKey)
@@ -36,10 +34,11 @@ export const AuthGuard = ({ privateValidation }: Props) => {
 
 		} catch (error) {
 			console.error('verifyUser error\n', error)
+			navigate(PublicRoutes.LOGIN, { replace: true })
+			clearLocalStorage(UserKey)
+			dispatch(resetUser())
 		}
 	}
-
-
 
 	return userState.name ? (
 		privateValidation ? (

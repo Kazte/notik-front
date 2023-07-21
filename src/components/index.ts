@@ -1,5 +1,6 @@
 export { default as Button } from './buttons/Button'
 export { default as NavButton } from './buttons/NavButton'
+export { default as TabButton } from './buttons/TabButton'
 export { default as ToggleButton } from './buttons/ToggleButton'
 export * from './index'
 export { default as InputWithIconBlack } from './inputs/InputWithIconBlack'

@@ -7,11 +7,11 @@ interface Props {
 }
 export default function NotesPreview({ note }: Props) {
 	return (
-		<div className="transition-all duration-150 flex min-w-[350px]  max-w-[400px] w-[20vw] h-[200px] mx-auto">
+		<div className="transition-all duration-150 flex min-w-[350px]  max-w-[400px] w-[20vw] h-[220px] mx-auto">
 			<div className="flex flex-col items-stretch w-full h-full transition-all duration-150 bg-surface rounded-sm p-2">
 				< div className="flex flex-wrap items-center mx-auto p-2 w-full" >
 					<h2 className="text-xl font-bold tracking-normal line-clamp-1 w-full">
-						<Link to={`/${PrivateRoutes.NOTES}/${note.id}`} className="hover:underline w-full">
+						<Link to={`/${PrivateRoutes.NOTES}/${note.guid}`} className="hover:underline w-full">
 							{note.noteTitle}
 						</Link>
 					</h2>
@@ -39,6 +39,7 @@ export default function NotesPreview({ note }: Props) {
 							new Date(note.noteModified).getHours().toString().padStart(2, '0') + ':' +
 							new Date(note.noteModified).getMinutes().toString().padStart(2, '0')
 						}</small>
+						<small className="text-gray-500">{note.guid}</small>
 					</div>
 
 					{

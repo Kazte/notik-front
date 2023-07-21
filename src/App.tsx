@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Navigate } from 'react-router-dom'
 import { AuthGuard, RoleGuard } from './guards'
 import { PrivateRoutes, PublicRoutes, Roles } from './models'
-import { RegisterPage, RoutesWithNotFound } from './pages'
+import { RegisterPage, RoutesWithNotFound, SharePage } from './pages'
 import store from './redux/store'
 import { FooterLayout, HeaderLayout, MainLayout } from './layout'
 
@@ -24,6 +24,7 @@ function App() {
 								<Route path="/" element={<Navigate to={PrivateRoutes.NOTES} />} />
 								<Route path={PublicRoutes.LOGIN} element={<Login />} />
 								<Route path={PublicRoutes.REGISTER} element={<RegisterPage />} />
+								<Route path={`${PublicRoutes.SHARE}/:guid`} element={<SharePage />} />
 
 								<Route element={<AuthGuard privateValidation={true} />}>
 									{/* <Route path={`${PrivateRoutes.PRIVATE}/*`} element={<Private />} /> */}

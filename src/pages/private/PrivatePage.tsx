@@ -13,7 +13,7 @@ export default function PrivatePage() {
 		<RoutesWithNotFound>
 			<Route path="/" element={<Navigate to={PrivateRoutes.NOTES} />} />
 			<Route path={PrivateRoutes.NOTES} element={<NotesPage />} />
-			<Route path={`${PrivateRoutes.NOTES}/:id`} element={<NoteDetailPage />} />
+			<Route path={`${PrivateRoutes.NOTES}/:guid`} element={<NoteDetailPage />} />
 			<Route path={PrivateRoutes.PROFILE} element={<ProfilePage />} />
 		</RoutesWithNotFound>
 	)

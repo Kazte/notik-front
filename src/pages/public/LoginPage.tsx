@@ -28,8 +28,6 @@ export default function LoginPage() {
 		try {
 			const result = await AuthService.login(username, password)
 
-			console.log(result)
-
 			if (result.result) {
 				dispatch(createUser({
 					id: result.user.userId,
@@ -54,10 +52,6 @@ export default function LoginPage() {
 		const form = event.currentTarget
 		const username = form.username.value
 		const password = form.password.value
-
-		console.log('username', username)
-		console.log('password', password)
-
 
 		setFetching(true)
 		await login(username, password)

@@ -4,8 +4,8 @@ import { useSeo } from '../../hooks'
 import { EmailIcon, HideIcon, PasswordIcon, ShowIcon, UserIcon } from '../../icons'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { UserKey, createUser, resetUser } from '../../redux/states/user'
-import { PrivateRoutes, PublicRoutes } from '../../models'
+import { UserKey, resetUser } from '../../redux/states/user'
+import { PublicRoutes } from '../../models'
 import AuthService from '../../services/auth.service'
 import { clearLocalStorage } from '../../utilities'
 
@@ -22,8 +22,6 @@ export default function RegisterPage() {
 		clearLocalStorage(UserKey)
 		dispatch(resetUser())
 		navigate(`/${PublicRoutes.REGISTER}`, { replace: true })
-
-		console.log('RegisterPage')
 	}, [])
 
 
@@ -68,7 +66,7 @@ export default function RegisterPage() {
 	return (
 		<div className="grid place-items-center h-full">
 			<div className="w-full max-w-md p-4 space-y-4 bg-neutral-800 rounded-sm">
-				<h1 className='text-3xl font-bold text-center'>Login</h1>
+				<h1 className='text-3xl font-bold text-center'>Register</h1>
 				<form className="flex flex-col gap-4" onSubmit={onSubmitHandler} onChange={() => { setErrors([]) }}>
 					<InputWithIconWhite disabled={fetching} id='username' label="Username" icon={<UserIcon />} placeholder='Username' type='text' />
 					<InputWithIconWhite disabled={fetching} id='email' label="Email" icon={<EmailIcon />} placeholder='Email' type='email' />

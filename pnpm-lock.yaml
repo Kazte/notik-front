@@ -23,6 +23,9 @@ dependencies:
   '@types/react-router-dom':
     specifier: ^5.3.3
     version: 5.3.3
+  '@uiw/codemirror-theme-vscode':
+    specifier: ^4.21.7
+    version: 4.21.7(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.15.0)
   '@uiw/codemirror-theme-xcode':
     specifier: ^4.21.7
     version: 4.21.7(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.15.0)
@@ -1190,6 +1193,16 @@ packages:
       '@codemirror/search': 6.5.0
       '@codemirror/state': 6.2.1
       '@codemirror/view': 6.15.0
+    dev: false
+
+  /@uiw/codemirror-theme-vscode@4.21.7(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.15.0):
+    resolution: {integrity: sha512-q6UC2yHmmh6JtcO9C5BAFlFQKNgjNX5OJpNGnXTzAOqT6tCzSxQVZxT+bTzpxwV+bho/ilHD37Vcf7WN+nxJ+A==}
+    dependencies:
+      '@uiw/codemirror-themes': 4.21.7(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.15.0)
+    transitivePeerDependencies:
+      - '@codemirror/language'
+      - '@codemirror/state'
+      - '@codemirror/view'
     dev: false
 
   /@uiw/codemirror-theme-xcode@4.21.7(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.15.0):
