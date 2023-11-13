@@ -14,7 +14,7 @@ const Private = lazy(() => import('./pages/private/PrivatePage'))
 function App() {
 	return (
 		<div className="flex flex-col h-screen">
-			<Suspense fallback={<>Cargando</>}>
+			<Suspense fallback={<>Loading...</>}>
 				<Provider store={store}>
 					<BrowserRouter>
 						<HeaderLayout />

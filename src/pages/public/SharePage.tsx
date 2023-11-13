@@ -26,6 +26,8 @@ export default function LoginPage() {
 			const response = await NotesService.getShareNoteByGuid(userState.token, noteGuid)
 
 			if (response.result) {
+
+				console.log(response.data);
 				setNote(response.data)
 			}
 		} catch (error) {
