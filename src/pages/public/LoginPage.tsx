@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { PrivateRoutes, PublicRoutes, Roles } from '../../models'
+import { PrivateRoutes, PublicRoutes } from '../../models'
 import { UserKey, createUser, resetUser } from '../../redux/states/user'
 import { clearLocalStorage } from '../../utilities'
 import { InputWithIconWhite, Button, ToggleButton } from '../../components'

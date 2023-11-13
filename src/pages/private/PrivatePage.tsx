@@ -1,8 +1,6 @@
-import { lazy } from 'react'
-import { Navigate, Route, useSearchParams } from 'react-router-dom'
+import { Navigate, Route } from 'react-router-dom'
 import { PrivateRoutes } from '../../models'
 import { NotesPage, ProfilePage, RoutesWithNotFound } from '..'
-import { useSeo } from '../../hooks'
 import NoteDetailPage from './NoteDetailPage'
 
 // const Dashboard = lazy(() => import('./Dashboard/Dashboard'))

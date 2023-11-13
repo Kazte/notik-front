@@ -9,6 +9,7 @@ export default function useSeo({ title, desription }: Props) {
 	const prevTitle = useRef(document.title)
 	const prevDescription = useRef(document.querySelector('meta[name="description"]')?.getAttribute('content'))
 
+	// @ts-ignore
 	useEffect(() => {
 		const previousTitle = prevTitle.current
 		if (title) {
@@ -26,6 +27,7 @@ export default function useSeo({ title, desription }: Props) {
 			metaDescription?.setAttribute('content', desription)
 		}
 
+		// @ts-ignore
 		return () => metaDescription?.setAttribute('content', previousDescription)
 	}, [desription])
 

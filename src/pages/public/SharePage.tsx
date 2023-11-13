@@ -61,6 +61,7 @@ export default function LoginPage() {
 								source={note.noteBody}
 								className='h-full p-4 overflow-y-auto bg-surface'
 								rehypeRewrite={(node, _, parent) => {
+									// @ts-ignore
 									if (node.tagName === 'a' && parent && /^h(1|2|3|4|5|6)/.test(parent.tagName)) {
 										parent.children = parent.children.slice(1)
 									}
